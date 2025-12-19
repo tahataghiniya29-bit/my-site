@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #eaf6ff, #f5f5f5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* ذرات پس‌زمینه */
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #aaa;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: floatUp linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); }
+        to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    /* قلب */
+    .heart {
+        width: 110px;
+        height: 110px;
+        background: #ff4d4d;
+        position: relative;
+        transform: rotate(-45deg);
+        margin-bottom: 24px;
+        z-index: 2;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        background: #ff4d4d;
+        border-radius: 50%;
+    }
+
+    .heart::before { top: -55px; left: 0; }
+    .heart::after { left: 55px; top: 0; }
+
+    /* متن تایپ‌شونده */
+    .title {
+        font-size: 28px;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #222;
+        width: 0;
+        animation: typing 2s steps(20, end) forwards,
+                   blink 0.75s step-end infinite alternate;
+        z-index: 2;
+    }
+
+    .author {
+        font-family: monospace;
+        font-size: 16px;
+        color: #555;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #555;
+        width: 0;
+        animation: typingAuthor 1.8s steps(14, end) forwards 2.2s,
+                   blinkAuthor 0.75s step-end infinite alternate 2.2s;
+        z-index: 2;
+    }
+
+    @keyframes typing { to { width: 210px; } }
+    @keyframes blink { 50% { border-color: transparent; } }
+    @keyframes typingAuthor { to { width: 120px; } }
+    @keyframes blinkAuthor { 50% { border-color: transparent; } }
+
+    /* نمایش کد پایین صفحه */
+    pre {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        max-height: 30%;
+        overflow: auto;
+        background: rgba(0,0,0,0.12);
+        color: #111;
+        font-family: monospace;
+        padding: 10px;
+        margin: 0;
+        z-index: 1;
+        border-top: 1px solid #ccc;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="heart"></div>
+<div class="title">Happy Birthday!</div>
+<div class="author">maede nejati</div>
+
+<pre>
+&lt;div class="heart"&gt;&lt;/div&gt;
+&lt;div class="title"&gt;Happy Birthday!&lt;/div&gt;
+&lt;div class="author"&gt;maede nejati&lt;/div&gt;
+</pre>
+
+<script>
+    for (let i = 0; i < 40; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.bottom = Math.random() * 100 + "vh";
+        p.style.animationDuration = (Math.random() * 5 + 6) + "s";
+        document.body.appendChild(p);
+    }
+</script>
+
+</body>
+</html>
 # my-site
